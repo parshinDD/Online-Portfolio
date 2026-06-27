@@ -1,0 +1,81 @@
+:root {
+    --color-bg: #0f0f12;
+    --color-bg-elevated: #15151a;
+    --color-bg-card: #18181d;
+    --color-border: #26262e;
+    --color-border-hover: #3a3a4a;
+
+    --color-primary: #a3a3ff;
+    --color-primary-soft: #a3a3ff1a;
+    --color-secondary: #c77dff;
+
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #e0e0e0;
+    --color-text-muted: #8a8a96;
+
+    --color-success: #7ee7ac;
+
+    --gradient-accent: linear-gradient(120deg, #a3a3ff 0%, #c77dff 100%);
+    --gradient-bg-glow: radial-gradient(circle at 50% 0%, #a3a3ff14, transparent 60%);
+
+    --glow-primary: 0 0 24px #a3a3ff4d, 0 0 2px #a3a3ff80;
+    --glow-primary-strong: 0 0 40px #a3a3ff66, 0 0 4px #a3a3ffb3;
+    --glow-secondary: 0 0 24px #c77dff4d;
+
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+    --fs-xs: 0.8rem;
+    --fs-sm: 0.9rem;
+    --fs-base: 1rem;
+    --fs-md: 1.15rem;
+    --fs-lg: 1.5rem;
+    --fs-xl: 2.25rem;
+    --fs-2xl: 3.25rem;
+    --fs-3xl: 4.5rem;
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4.5rem;
+    --space-9: 7rem;
+
+    --container-max: 1180px;
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --border-width: 1px;
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-fast: 0.18s;
+    --duration-base: 0.32s;
+
+    --backdrop-blur: blur(16px);
+}
+
+[data-theme="light"] {
+    --color-bg: #f6f5fa;
+    --color-bg-elevated: #ffffff;
+    --color-bg-card: #ffffff;
+    --color-border: #e2e1ec;
+    --color-border-hover: #cfcde0;
+
+    --color-primary: #6c63d6;
+    --color-primary-soft: #6c63d61a;
+    --color-secondary: #a259d9;
+
+    --color-text-primary: #15151f;
+    --color-text-secondary: #41414e;
+    --color-text-muted: #8585947f;
+
+    --gradient-accent: linear-gradient(120deg, #6c63d6 0%, #a259d9 100%);
+    --gradient-bg-glow: radial-gradient(circle at 50% 0%, #6c63d614, transparent 60%);
+
+    --glow-primary: 0 0 18px #6c63d633, 0 0 1px #6c63d64d;
+    --glow-primary-strong: 0 0 28px #6c63d64d;
+    --glow-secondary: 0 0 18px #a259d933;
+}

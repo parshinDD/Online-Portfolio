@@ -50,16 +50,15 @@ export const sectionContent = {
 };
 
 export const contactInfo = {
-    email: 'daniilparschin186@gmail.com',
-    phone: '+7 (982) 459-83-20',
+    email: 'parshin.dd@phystech.edu',
     location: 'Пермь, Россия',
 };
 
 export const socials = [
-    { id: 'github', label: 'GitHub', url: 'https://github.com/parshinDD' },
-    { id: 'telegram', label: 'Telegram', url: 'https://t.me/putka_sok' },
-    { id: 'vk', label: 'VK', url: 'https://vk.ru/putka_sok' },
-    { id: 'email', label: 'Email', url: `mailto:${contactInfo.email}` },
+    { id: 'github', label: 'GitHub', handle: '@parshinDD', url: 'https://github.com/parshinDD' },
+    { id: 'telegram', label: 'Telegram', handle: '@putka_sok', url: 'https://t.me/putka_sok' },
+    { id: 'vk', label: 'VK', handle: '@putka_sok', url: 'https://vk.ru/putka_sok' },
+    { id: 'email', label: 'Email', handle: contactInfo.email, url: `mailto:${contactInfo.email}` },
 ];
 
 export const skills = [

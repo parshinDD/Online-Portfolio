@@ -17,7 +17,7 @@ export function Header() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
             <div className="container header__inner">
-                <a href="#hero" className="header__logo mono" onClick={(e) => handleNavClick(e, "hero")}>
+                <a href="#hero" className="header__logo" data-cursor="top" onClick={(e) => handleNavClick(e, "hero")}>
                     {headerContent.logo}
                     <span className="header__logo-dot">.</span>
                 </a>
@@ -28,6 +28,7 @@ export function Header() {
                             key={link.id}
                             href={`#${link.id}`}
                             className="header__nav-link"
+                            data-cursor={link.label}
                             onClick={(e) => handleNavClick(e, link.id)}
                         >
                             {link.label}

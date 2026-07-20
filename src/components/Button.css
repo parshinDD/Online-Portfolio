@@ -17,7 +17,7 @@
 }
 
 .btn--primary {
-    background: var(--gradient-accent);
+    background: var(--color-primary);
     color: white;
     box-shadow: var(--glow-primary);
 }

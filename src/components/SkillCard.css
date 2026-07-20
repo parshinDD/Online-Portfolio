@@ -5,6 +5,9 @@
     border: 1px solid var(--color-border);
     transition: border-color var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-out);
+    transform-style: preserve-3d;
+    will-change: transform;
+    cursor: default;
 }
 
 .skill-card:hover {

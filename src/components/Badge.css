@@ -6,7 +6,13 @@
     font-weight: 500;
     color: var(--color-primary);
     background: var(--color-primary-soft);
-    border: 1px solid #a3a3ff33;
+    border: 1px solid #39ff1440;
     border-radius: 999px;
     letter-spacing: 0.01em;
+    cursor: default;
+    transition: box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.badge:hover {
+    box-shadow: 0 4px 16px -4px #39ff1466;
 }

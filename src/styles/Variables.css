@@ -1,26 +1,28 @@
 :root {
-    --color-bg: #0f0f12;
-    --color-bg-elevated: #15151a;
-    --color-bg-card: #18181d;
-    --color-border: #26262e;
-    --color-border-hover: #3a3a4a;
+    --color-bg: #150a2e;
+    --color-bg-elevated: #1c1040;
+    --color-bg-card: #1f1246;
+    --color-border: #3b2170;
+    --color-border-hover: #5c33a8;
 
-    --color-primary: #a3a3ff;
-    --color-primary-soft: #a3a3ff1a;
-    --color-secondary: #c77dff;
+    --color-primary: #39ff14;
+    --color-primary-soft: #39ff1420;
+    --color-secondary: #ff6ad5;
 
-    --color-text-primary: #ffffff;
-    --color-text-secondary: #e0e0e0;
-    --color-text-muted: #8a8a96;
+    --color-text-primary: #fff9ee;
+    --color-text-secondary: #e6def7;
+    --color-text-muted: #b3a3d9;
 
-    --color-success: #7ee7ac;
+    --color-success: #39ff14;
 
-    --gradient-accent: linear-gradient(120deg, #a3a3ff 0%, #c77dff 100%);
-    --gradient-bg-glow: radial-gradient(circle at 50% 0%, #a3a3ff14, transparent 60%);
+    --gradient-accent: linear-gradient(120deg, #39ff14 0%, #a6ff4d 45%, #ff6ad5 100%);
+    --gradient-bg-glow: radial-gradient(circle at 15% 0%, #39ff1422, transparent 55%),
+    radial-gradient(circle at 85% 20%, #ff6ad51c, transparent 50%),
+    radial-gradient(circle at 50% 100%, #6c33d61f, transparent 60%);
 
-    --glow-primary: 0 0 24px #a3a3ff4d, 0 0 2px #a3a3ff80;
-    --glow-primary-strong: 0 0 40px #a3a3ff66, 0 0 4px #a3a3ffb3;
-    --glow-secondary: 0 0 24px #c77dff4d;
+    --glow-primary: 0 0 26px #39ff1466, 0 0 3px #39ff14b3;
+    --glow-primary-strong: 0 0 46px #39ff1499, 0 0 6px #39ff14cc;
+    --glow-secondary: 0 0 26px #ff6ad559;
 
     --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
@@ -45,37 +47,39 @@
     --space-9: 7rem;
 
     --container-max: 1180px;
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 26px;
     --border-width: 1px;
 
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --duration-fast: 0.18s;
     --duration-base: 0.32s;
 
-    --backdrop-blur: blur(16px);
+    --backdrop-blur: blur(18px);
 }
 
 [data-theme="light"] {
-    --color-bg: #f6f5fa;
+    --color-bg: #fff9ee;
     --color-bg-elevated: #ffffff;
     --color-bg-card: #ffffff;
-    --color-border: #e2e1ec;
-    --color-border-hover: #cfcde0;
+    --color-border: #e3d9ff;
+    --color-border-hover: #c6b3ff;
 
-    --color-primary: #6c63d6;
-    --color-primary-soft: #6c63d61a;
-    --color-secondary: #a259d9;
+    --color-primary: #23b800;
+    --color-primary-soft: #23b80016;
+    --color-secondary: #d6389f;
 
-    --color-text-primary: #15151f;
-    --color-text-secondary: #41414e;
-    --color-text-muted: #8585947f;
+    --color-text-primary: #1c0f3d;
+    --color-text-secondary: #3d2e63;
+    --color-text-muted: #7c6ba3;
 
-    --gradient-accent: linear-gradient(120deg, #6c63d6 0%, #a259d9 100%);
-    --gradient-bg-glow: radial-gradient(circle at 50% 0%, #6c63d614, transparent 60%);
+    --gradient-accent: linear-gradient(120deg, #23b800 0%, #6fd400 45%, #d6389f 100%);
+    --gradient-bg-glow: radial-gradient(circle at 15% 0%, #23b8001a, transparent 55%),
+    radial-gradient(circle at 85% 20%, #d6389f14, transparent 50%),
+    radial-gradient(circle at 50% 100%, #6c33d614, transparent 60%);
 
-    --glow-primary: 0 0 18px #6c63d633, 0 0 1px #6c63d64d;
-    --glow-primary-strong: 0 0 28px #6c63d64d;
-    --glow-secondary: 0 0 18px #a259d933;
+    --glow-primary: 0 0 20px #23b80033, 0 0 2px #23b8004d;
+    --glow-primary-strong: 0 0 32px #23b80055;
+    --glow-secondary: 0 0 20px #d6389f33;
 }

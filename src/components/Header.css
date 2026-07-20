@@ -2,7 +2,7 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    background: color-mix(in srgb, var(--color-bg) 75%, transparent);
+    background: color-mix(in srgb, var(--color-bg) 70%, transparent);
     backdrop-filter: var(--backdrop-blur);
     -webkit-backdrop-filter: var(--backdrop-blur);
     border-bottom: 1px solid var(--color-border);
@@ -16,14 +16,16 @@
 }
 
 .header__logo {
+    font-family: "Unbounded", var(--font-sans);
     font-size: var(--fs-md);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text-primary);
     letter-spacing: -0.01em;
 }
 
 .header__logo-dot {
     color: var(--color-primary);
+    text-shadow: 0 0 12px var(--color-primary);
 }
 
 .header__nav {
@@ -34,12 +36,32 @@
 .header__nav-link {
     font-size: var(--fs-sm);
     color: var(--color-text-muted);
-    transition: color var(--duration-fast) var(--ease-out);
+    transition: color var(--duration-fast) var(--ease-out),
+    text-shadow var(--duration-fast) var(--ease-out);
     position: relative;
+    padding-bottom: 3px;
+}
+
+.header__nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1.5px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-base) var(--ease-out);
 }
 
 .header__nav-link:hover {
-    color: var(--color-text-primary);
+    color: var(--color-primary);
+    text-shadow: 0 0 10px var(--color-primary-soft);
+}
+
+.header__nav-link:hover::after {
+    transform: scaleX(1);
 }
 
 @media (max-width: 768px) {

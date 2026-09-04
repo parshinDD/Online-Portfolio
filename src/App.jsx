@@ -1,7 +1,7 @@
 import { ThemeProvider } from "./context/ThemeContext";
 import { Header } from "./components/Header";
 import { CustomCursor } from "./components/CustomCursor";
-import { LevitatingCapsule } from "./components/LevitatingCapsule";
+import { SidePanel } from "./components/SidePanel";
 import { ResumePDF } from "./components/ResumePDF";
 import { Hero } from "./sections/Hero";
 import { About } from "./sections/About";
@@ -22,7 +22,7 @@ export default function App() {
                 <Timeline />
                 <Contact />
             </main>
-            <LevitatingCapsule />
+            <SidePanel />
             <ResumePDF />
         </ThemeProvider>
     );

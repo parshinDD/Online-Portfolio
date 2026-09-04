@@ -2,14 +2,14 @@ import { motion } from "framer-motion";
 import { devLinks } from "../data/Content";
 import { FaGithub } from "react-icons/fa";
 import { SiCodewars } from "react-icons/si";
-import "./LevitatingCapsule.css";
+import "./SidePanel.css";
 
 const icons = {
     github: <FaGithub size={24} />,
     codewars: <SiCodewars size={24} />,
 }
 
-export function LevitatingCapsule() {
+export function SidePanel() {
     return (
         <motion.aside
             className="dev-rail"
@@ -23,7 +23,7 @@ export function LevitatingCapsule() {
                 {devLinks.map((link) => (
                     <a
                         key={link.id}
-                        href={link.href}
+                        href={link.url}
                         target="_blank"
                         rel="noreferrer"
                         className="dev-rail__link"

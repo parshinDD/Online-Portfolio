@@ -21,7 +21,6 @@ function formatGeneratedAt() {
 
 export function ResumePDF() {
     const primarySkills = skills.filter((s) => s.level !== "future");
-    const topProjects = projects.slice(0, 3);
     const contactSocials = socials.filter((s) => s.id !== "email");
 
     return (
@@ -44,7 +43,7 @@ export function ResumePDF() {
                 <div className="resume-pdf__col resume-pdf__col--main">
                     <section className="resume-pdf__section">
                         <h2>Проекты</h2>
-                        {topProjects.map((p) => (
+                        {projects.map((p) => (
                             <article key={p.id} className="resume-pdf__project">
                                 <div className="resume-pdf__project-top">
                                     <h3>{p.title}</h3>

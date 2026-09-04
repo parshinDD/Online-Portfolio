@@ -1,0 +1,282 @@
+.resume-pdf {
+    display: none;
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 12mm 15mm 16mm;
+    }
+
+    html, body {
+        overflow: visible !important;
+        background: #ffffff !important;
+        background-image: none !important;
+    }
+
+    body::before,
+    #root > *:not(.resume-pdf) {
+        display: none !important;
+    }
+
+    .resume-pdf {
+        display: block !important;
+        position: static;
+        width: 100%;
+        color: #1c0f3d;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 10.5pt;
+        line-height: 1.45;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .resume-pdf__header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+        border-bottom: 2px solid #23b800;
+        position: relative;
+    }
+
+    .resume-pdf__photo {
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #23b800;
+        box-shadow: 0 0 0 3px #e9fbe0;
+        flex-shrink: 0;
+    }
+
+    .resume-pdf__heading h1 {
+        font-size: 20pt;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin: 0 0 3px;
+        color: #1c0f3d;
+    }
+
+    .resume-pdf__role {
+        font-size: 10.5pt;
+        color: #6c33d6;
+        font-weight: 600;
+    }
+
+    .resume-pdf__pitch {
+        font-size: 9.5pt;
+        color: #3d2e63;
+        margin-bottom: 16px;
+        padding-left: 10px;
+        border-left: 2px solid #e3d9ff;
+    }
+
+    .resume-pdf__columns {
+        display: flex;
+        gap: 22px;
+    }
+
+    .resume-pdf__col--main {
+        flex: 1.6;
+    }
+
+    .resume-pdf__col--side {
+        flex: 1;
+        border-left: 1px solid #e3d9ff;
+        padding-left: 18px;
+    }
+
+    .resume-pdf__section {
+        margin-bottom: 15px;
+        break-inside: avoid;
+    }
+
+    .resume-pdf__section h2 {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 8.5pt;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #23b800;
+        font-weight: 700;
+        margin-bottom: 9px;
+    }
+
+    .resume-pdf__section h2::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #23b800;
+        flex-shrink: 0;
+    }
+
+    .resume-pdf__section--contacts {
+        margin-bottom: 18px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid #e3d9ff;
+    }
+
+    .resume-pdf__contacts {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .resume-pdf__contacts li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 8.8pt;
+        color: #3d2e63;
+    }
+
+    .resume-pdf__contact-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        border-radius: 6px;
+        background: #f1ecff;
+        color: #6c33d6;
+    }
+
+    .resume-pdf__contact-icon svg {
+        width: 11px;
+        height: 11px;
+    }
+
+    .resume-pdf__project,
+    .resume-pdf__timeline-item {
+        margin-bottom: 10px;
+        break-inside: avoid;
+    }
+
+    .resume-pdf__project {
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: #faf8ff;
+        border: 1px solid #ede7ff;
+    }
+
+    .resume-pdf__project-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8px;
+    }
+
+    .resume-pdf__project h3,
+    .resume-pdf__timeline-item h3 {
+        font-size: 10pt;
+        font-weight: 700;
+        color: #1c0f3d;
+    }
+
+    .resume-pdf__project-link {
+        font-size: 7.5pt;
+        color: #6c33d6;
+        white-space: nowrap;
+        font-family: "JetBrains Mono", monospace;
+    }
+
+    .resume-pdf__project p,
+    .resume-pdf__timeline-item p {
+        font-size: 9pt;
+        color: #3d2e63;
+        margin-top: 3px;
+    }
+
+    .resume-pdf__tags {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-top: 6px;
+    }
+
+    .resume-pdf__tags li {
+        font-size: 7.5pt;
+        padding: 1px 8px;
+        border: 1px solid #23b80055;
+        background: #ffffff;
+        border-radius: 999px;
+        color: #23b800;
+        font-weight: 600;
+    }
+
+    .resume-pdf__timeline-item {
+        display: flex;
+        gap: 10px;
+        position: relative;
+        padding-left: 12px;
+    }
+
+    .resume-pdf__timeline-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 4px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #6c33d6;
+    }
+
+    .resume-pdf__period {
+        flex-shrink: 0;
+        width: 78px;
+        font-size: 8pt;
+        color: #7c6ba3;
+        font-family: "JetBrains Mono", monospace;
+        padding-top: 1px;
+    }
+
+    /* ===== Навыки ===== */
+    .resume-pdf__skills {
+        list-style: none;
+    }
+
+    .resume-pdf__skills li {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 9px;
+        break-inside: avoid;
+        padding-bottom: 9px;
+        border-bottom: 1px dashed #e3d9ff;
+    }
+
+    .resume-pdf__skills li:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .resume-pdf__skills strong {
+        font-size: 9.5pt;
+        color: #1c0f3d;
+    }
+
+    .resume-pdf__skills span {
+        font-size: 8pt;
+        color: #7c6ba3;
+        margin-top: 2px;
+    }
+
+    .resume-pdf__footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 18px;
+        padding-top: 8px;
+        border-top: 1px solid #e3d9ff;
+        font-size: 7.5pt;
+        color: #a99bd1;
+        font-family: "JetBrains Mono", monospace;
+    }
+}

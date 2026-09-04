@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
-import "./Header.css";
+import { DownloadResumeButton } from "./DownloadResumeButton";
 import { headerContent, navLinks } from "../data/Content";
+import "./Header.css";
 
 export function Header() {
     const handleNavClick = (e, id) => {
@@ -35,7 +36,10 @@ export function Header() {
                         </a>
                     ))}
                 </nav>
-                <ThemeToggle />
+                <div className="header__actions">
+                    <DownloadResumeButton />
+                    <ThemeToggle />
+                </div>
             </div>
         </motion.header>
     );

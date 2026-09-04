@@ -1,6 +1,8 @@
 import { ThemeProvider } from "./context/ThemeContext";
 import { Header } from "./components/Header";
 import { CustomCursor } from "./components/CustomCursor";
+import { LevitatingCapsule } from "./components/LevitatingCapsule";
+import { ResumePDF } from "./components/ResumePDF";
 import { Hero } from "./sections/Hero";
 import { About } from "./sections/About";
 import { Projects } from "./sections/Projects";
@@ -20,6 +22,8 @@ export default function App() {
                 <Timeline />
                 <Contact />
             </main>
+            <LevitatingCapsule />
+            <ResumePDF />
         </ThemeProvider>
     );
 }

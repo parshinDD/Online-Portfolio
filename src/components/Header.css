@@ -33,6 +33,12 @@
     gap: var(--space-6);
 }
 
+.header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
 .header__nav-link {
     font-size: var(--fs-sm);
     color: var(--color-text-muted);

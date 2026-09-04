@@ -21,7 +21,9 @@ export function Button({
     const springY = useSpring(y, { stiffness: 200, damping: 14, mass: 0.3 });
 
     const handleMouseMove = (e) => {
-        if (!magnetic) return;
+        if (!magnetic)
+            return;
+        
         const rect = e.currentTarget.getBoundingClientRect();
         const relX = e.clientX - (rect.left + rect.width / 2);
         const relY = e.clientY - (rect.top + rect.height / 2);

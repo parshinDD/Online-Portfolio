@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
+import { IoMoonOutline, IoMoon, IoSunnyOutline, IoSunny } from "react-icons/io5";
 import "./ThemeToggle.css";
 
 export function ThemeToggle() {
@@ -10,11 +11,16 @@ export function ThemeToggle() {
         <button
             className="theme-toggle"
             onClick={toggleTheme}
-            aria-label={isDark ? 'Включить светлую тему' : 'Включить тёмную тему'}
+            aria-label={isDark ? 'Включить светлую тему' : 'Включить темную тему'}
             aria-pressed={!isDark}
         >
-            <MoonIcon className="theme-toggle__track-icon theme-toggle__track-icon--moon" />
-            <SunIcon className="theme-toggle__track-icon theme-toggle__track-icon--sun" />
+            <span className="theme-toggle__track-icon theme-toggle__track-icon--moon">
+                <IoMoonOutline size={13} />
+            </span>
+            
+            <span className="theme-toggle__track-icon theme-toggle__track-icon--sun">
+                <IoSunnyOutline size={13} />
+            </span>
 
             <motion.span
                 className="theme-toggle__thumb"
@@ -22,53 +28,11 @@ export function ThemeToggle() {
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
             >
                 {isDark ? (
-                    <MoonIcon className="theme-toggle__thumb-icon" />
+                    <IoMoon className="theme-toggle__thumb-icon" />
                 ) : (
-                    <SunIcon className="theme-toggle__thumb-icon" />
+                    <IoSunny className="theme-toggle__thumb-icon" />
                 )}
             </motion.span>
         </button>
-    );
-}
-
-function MoonIcon({ className }) {
-    return (
-        <svg
-            className={className}
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-        >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-        </svg>
-    );
-}
-
-function SunIcon({ className }) {
-    return (
-        <svg
-            className={className}
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-        >
-            <circle cx="12" cy="12" r="4" />
-            <line x1="12" y1="2" x2="12" y2="4" />
-            <line x1="12" y1="20" x2="12" y2="22" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-            <line x1="2" y1="12" x2="4" y2="12" />
-            <line x1="20" y1="12" x2="22" y2="12" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-        </svg>
     );
 }

@@ -61,6 +61,11 @@ export const socials = [
     { id: 'email', label: 'Email', handle: contactInfo.email, url: `mailto:${contactInfo.email}` },
 ];
 
+export const devLinks = [
+    { id: 'github', label: 'GitHub', url: 'https://github.com/parshinDD' },
+    { id: 'codewars', label: 'Codewars', url: 'https://www.codewars.com/users/parshinDD' },
+]
+
 export const skills = [
     {
         id: 'python',

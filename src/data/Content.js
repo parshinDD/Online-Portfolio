@@ -27,7 +27,7 @@ export const sectionContent = {
     about: {
         eyebrow: '01 / about',
         title: 'Обо мне',
-        description: 'Развиваюсь в бэкенд-разработке и машинном обучении. Параллельно веду учебные и студенческие проекты - от кураторства до организации всероссийских мероприятий.',
+        description: 'Развиваюсь в бэкенд-разработке и машинном обучении. Параллельно веду учебные и студенческие проекты - от кураторства до организации всероссийских мероприятий. Обладаю быстрой обучаемостью и мотивацией развиваться в команде.',
     },
     projects: {
         eyebrow: '02 / projects',
@@ -70,8 +70,15 @@ export const skills = [
     {
         id: 'python',
         name: 'Python',
-        detail: 'FastAPI, Flask, Asyncio, SQL/PostgreSQL/MySQL',
+        detail: 'FastAPI, Flask, Asyncio',
         note: 'Основной фокус',
+        level: 'primary',
+    },
+    {
+        id: 'db',
+        name: 'Database',
+        detail: 'SQL, PostgreSQL, MySQL, MongoDB',
+        note: 'Хранение',
         level: 'primary',
     },
     {
@@ -86,6 +93,20 @@ export const skills = [
         name: 'C++',
         detail: 'Структуры данных, алгоритмы, системное программирование',
         note: 'Низкоуровневый бэкграунд',
+        level: 'secondary',
+    },
+    {
+        id: 'cicd',
+        name: 'CI/CD',
+        detail: 'GitHub Actions',
+        note: 'Автоматика',
+        level: 'secondary',
+    },
+    {
+        id: 'infra',
+        name: 'Infrastructure',
+        detail: 'Git, Docker, Linux, Grafana, Redis',
+        note: 'Про управление',
         level: 'secondary',
     },
     {

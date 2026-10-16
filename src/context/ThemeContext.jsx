@@ -4,14 +4,13 @@ const ThemeContext = createContext(null);
 
 function getInitialTheme() {
     if (typeof window === 'undefined')
-        return 'dark';
+        return 'light';
 
     const stored = window.localStorage?.getItem('theme');
     if (stored === 'dark' || stored === 'light')
         return stored;
 
-    const prefersLight = window.matchMedia?.('(prefers-color-scheme: light)').matches;
-    return prefersLight ? 'light' : 'dark';
+    return 'light';
 }
 
 export function ThemeProvider({ children }) {

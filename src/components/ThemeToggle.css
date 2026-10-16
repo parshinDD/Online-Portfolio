@@ -38,5 +38,5 @@
 .theme-toggle__thumb-icon {
     width: 12px;
     height: 12px;
-    color: #0f0f12;
+    color: var(--color-on-primary);
 }

@@ -22,7 +22,6 @@ export function DownloadResumeButton() {
             className="download-resume-btn"
             onClick={handleDownload}
             aria-label="Скачать резюме в формате PDF"
-            data-cursor="PDF"
         >
             <HiOutlineDownload size={30} />
             <span>PDF</span>

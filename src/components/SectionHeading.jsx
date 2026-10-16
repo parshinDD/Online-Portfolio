@@ -1,18 +1,34 @@
 import { motion } from "framer-motion";
 import "./SectionHeading.css";
 
-export function SectionHeading({ eyebrow, title, description }) {
+const ease = [0.23, 1, 0.32, 1];
+const container = { hidden: {}, show: { transition: { staggerChildren: 0.07 } } };
+const word = { hidden: { y: "105%" }, show: { y: 0, transition: { duration: 0.8, ease } } };
+const fade = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease } } };
+
+export function SectionHeading({ title, description, lead = false }) {
     return (
         <motion.div
-            className="section-heading"
-            initial={{ opacity: 0, y: 32, scale: 0.97 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            className={`section-heading${lead ? " section-heading--lead" : ""}`}
+            variants={container}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
         >
-            {eyebrow && <span className="section-heading__eyebrow mono">{eyebrow}</span>}
-            <h2 className="section-heading__title">{title}</h2>
-            {description && <p className="section-heading__desc">{description}</p>}
+            <h2 className="section-heading__title" aria-label={title}>
+                {title.split(" ").map((w, i) => (
+                    <span key={i} className="section-heading__mask" aria-hidden="true">
+                        <motion.span className="section-heading__word" variants={word}>
+                            {w}
+                        </motion.span>
+                    </span>
+                ))}
+            </h2>
+            {description && (
+                <motion.p className="section-heading__desc" variants={fade}>
+                    {description}
+                </motion.p>
+            )}
         </motion.div>
     );
 }

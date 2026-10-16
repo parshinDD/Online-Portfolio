@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 import "./Button.css";
 
 export function Button({
@@ -15,20 +15,21 @@ export function Button({
         ? { href, target: href.startsWith('http') ? '_blank' : undefined, rel: 'noreferrer' }
         : { type, onClick };
 
+    const reduce = useReducedMotion();
+    const pull = magnetic && !reduce;
+
     const x = useMotionValue(0);
     const y = useMotionValue(0);
-    const springX = useSpring(x, { stiffness: 200, damping: 14, mass: 0.3 });
-    const springY = useSpring(y, { stiffness: 200, damping: 14, mass: 0.3 });
+    const springX = useSpring(x, { stiffness: 220, damping: 18, mass: 0.3 });
+    const springY = useSpring(y, { stiffness: 220, damping: 18, mass: 0.3 });
 
     const handleMouseMove = (e) => {
-        if (!magnetic)
+        if (!pull)
             return;
-        
+
         const rect = e.currentTarget.getBoundingClientRect();
-        const relX = e.clientX - (rect.left + rect.width / 2);
-        const relY = e.clientY - (rect.top + rect.height / 2);
-        x.set(relX * 0.35);
-        y.set(relY * 0.5);
+        x.set((e.clientX - (rect.left + rect.width / 2)) * 0.25);
+        y.set((e.clientY - (rect.top + rect.height / 2)) * 0.35);
     };
 
     const handleMouseLeave = () => {
@@ -39,12 +40,11 @@ export function Button({
     return (
         <Component
             className={`btn btn--${variant} ${className}`.trim()}
-            style={magnetic ? { x: springX, y: springY } : undefined}
+            style={pull ? { x: springX, y: springY } : undefined}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            whileHover={{ y: magnetic ? undefined : -2, scale: 1.02 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.14, ease: [0.23, 1, 0.32, 1] }}
             {...extraProps}
         >
             {children}

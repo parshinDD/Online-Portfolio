@@ -1,26 +1,38 @@
 .section-heading {
-    max-width: 640px;
-    margin-bottom: var(--space-7);
-}
-
-.section-heading__eyebrow {
-    display: block;
-    color: var(--color-primary);
-    font-size: var(--fs-xs);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-8);
 }
 
 .section-heading__title {
-    font-family: "Unbounded", var(--font-sans);
-    font-weight: 700;
-    font-size: clamp(1.9rem, 4.4vw, 3rem);
-    letter-spacing: -0.01em;
-    margin-bottom: var(--space-3);
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    margin-bottom: var(--space-5);
 }
 
 .section-heading__desc {
+    max-width: 52ch;
     color: var(--color-text-muted);
     font-size: var(--fs-md);
+}
+
+.section-heading--lead .section-heading__desc {
+    max-width: 48ch;
+    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    color: var(--color-text-secondary);
+}
+
+.section-heading__mask {
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+    margin-right: 0.24em;
+}
+
+.section-heading__word {
+    display: inline-block;
 }

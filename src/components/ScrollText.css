@@ -1,0 +1,9 @@
+.scroll-text {
+    max-width: 24em;
+    margin-bottom: var(--space-9);
+    font-size: clamp(1.9rem, 4.4vw, 4.2rem);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+    color: var(--color-text-primary);
+}

@@ -8,38 +8,47 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 88px;
 }
 
 body {
     background-color: var(--color-bg);
-    background-image: var(--gradient-bg-glow);
     color: var(--color-text-secondary);
     font-family: var(--font-sans);
     font-size: var(--fs-base);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     transition: background-color var(--duration-base) var(--ease-out),
     color var(--duration-base) var(--ease-out);
     overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
 }
 
+body::after,
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.05;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+body::after {
+    background-image: var(--gradient-bg-glow);
+}
+
+body::before {
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 h1, h2, h3, h4 {
     color: var(--color-text-primary);
     font-weight: 600;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
 }
 
 a {
@@ -78,9 +87,11 @@ img, svg {
 ::-webkit-scrollbar {
     width: 10px;
 }
+
 ::-webkit-scrollbar-track {
     background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--color-border-hover);
     border-radius: 10px;
@@ -94,7 +105,7 @@ img, svg {
 }
 
 .section {
-    padding: var(--space-9) 0;
+    padding: clamp(5rem, 11vw, 9rem) 0;
     position: relative;
 }
 
@@ -106,6 +117,40 @@ img, svg {
     color: var(--color-text-muted);
 }
 
+.on-scarlet {
+    --color-bg: #b22222;
+    --color-bg-elevated: #a01e1e;
+    --color-bg-card: #a01e1e;
+    --color-border: rgb(232 232 232 / 0.32);
+    --color-border-hover: rgb(232 232 232 / 0.6);
+    --color-primary: #e8e8e8;
+    --color-primary-solid: #e8e8e8;
+    --color-on-primary: #b22222;
+    --color-primary-soft: rgb(232 232 232 / 0.12);
+    --color-text-primary: #f4f4f4;
+    --color-text-secondary: #f4f4f4;
+    --color-text-muted: #f3d6d6;
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+}
+
+.on-ink {
+    --color-bg: var(--color-ink-solid);
+    --color-bg-elevated: var(--color-ink-solid);
+    --color-bg-card: var(--color-ink-solid);
+    --color-border: color-mix(in srgb, var(--color-on-ink) 28%, transparent);
+    --color-border-hover: color-mix(in srgb, var(--color-on-ink) 55%, transparent);
+    --color-primary: var(--color-accent-on-ink);
+    --color-primary-solid: var(--color-on-ink);
+    --color-on-primary: var(--color-ink-solid);
+    --color-primary-soft: color-mix(in srgb, var(--color-on-ink) 10%, transparent);
+    --color-text-primary: var(--color-on-ink);
+    --color-text-secondary: color-mix(in srgb, var(--color-on-ink) 88%, transparent);
+    --color-text-muted: color-mix(in srgb, var(--color-on-ink) 68%, transparent);
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -115,8 +160,14 @@ img, svg {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
     *, *::before, *::after {
         animation-duration: 0.001ms !important;
+        animation-delay: 0ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: 0.001ms !important;
     }
 }
@@ -124,8 +175,5 @@ img, svg {
 @media (max-width: 768px) {
     .container {
         padding: 0 var(--space-5);
-    }
-    .section {
-        padding: var(--space-8) 0;
     }
 }

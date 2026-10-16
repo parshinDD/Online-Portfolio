@@ -1,58 +1,144 @@
-.timeline__list {
-    position: relative;
-    margin-left: var(--space-2);
-    padding-left: var(--space-7);
-    border-left: 1px solid var(--color-border);
-    list-style: none;
-}
-
-.timeline__progress {
-    position: absolute;
-    left: -1px;
-    top: 0;
-    width: 2px;
-    height: 100%;
-    background: var(--color-primary);
-    box-shadow: var(--glow-primary);
-    transform-origin: top;
-    border-radius: 2px;
-}
-
-.timeline__item {
-    position: relative;
-    padding-bottom: var(--space-7);
-}
-
-.timeline__item:last-child {
+.timeline {
     padding-bottom: 0;
 }
 
-.timeline__marker {
+.timeline__pin {
+    height: calc(100vh + var(--n) * 22vh);
+}
+
+.timeline__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-7);
+    padding-top: 68px;
+    overflow: hidden;
+}
+
+.timeline__track {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    width: max-content;
+    padding: 0 calc((100vw - min(80vw, 520px)) / 2);
+    will-change: transform;
+}
+
+.timeline__card {
+    --ghost-base: var(--color-bg-card);
+    position: relative;
+    flex: 0 0 min(80vw, 520px);
+    min-height: clamp(330px, 50vh, 440px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    overflow: hidden;
+    translate: 0 var(--dy);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-card);
+    box-shadow: var(--shadow-card);
+}
+
+.timeline__ghost {
     position: absolute;
-    left: calc(-1 * var(--space-7) - 5px);
-    top: 4px;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    background: var(--color-bg);
-    border: 2px solid var(--color-primary);
-    box-shadow: var(--glow-primary);
+    right: -4%;
+    bottom: -12%;
+    font-size: clamp(7rem, 15vw, 13rem);
+    font-weight: 800;
+    line-height: 0.82;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    text-rendering: geometricPrecision;
+    color: color-mix(in srgb, var(--ghost-base) 90%, var(--color-text-primary));
+    pointer-events: none;
+    user-select: none;
+}
+
+.timeline__period,
+.timeline__text {
+    position: relative;
+    z-index: 1;
 }
 
 .timeline__period {
-    display: inline-block;
-    font-size: var(--fs-md);
-    font-weight: 600;
+    font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.05em;
     color: var(--color-primary);
-    margin-bottom: var(--space-2);
 }
 
 .timeline__title {
-    font-size: var(--fs-lg);
+    font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+    letter-spacing: -0.04em;
     margin-bottom: var(--space-2);
 }
 
 .timeline__description {
     color: var(--color-text-secondary);
-    max-width: 560px;
+}
+
+.timeline__bar {
+    height: 2px;
+    margin: 0 var(--space-6);
+    background: var(--color-border);
+}
+
+.timeline__bar-fill {
+    display: block;
+    height: 100%;
+    background: var(--color-primary);
+    transform-origin: left;
+}
+
+@media (max-width: 900px) {
+    .timeline__pin {
+        height: auto;
+    }
+
+    .timeline__sticky {
+        position: static;
+        height: auto;
+        padding-top: 0;
+        overflow: visible;
+    }
+
+    .timeline__track {
+        flex-direction: column;
+        align-items: stretch;
+        width: auto;
+        padding: 0 var(--space-5);
+        transform: none !important;
+    }
+
+    .timeline__card {
+        flex: none;
+        min-height: 0;
+        translate: none;
+        transform: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+    }
+
+    .timeline__ghost {
+        transform: none !important;
+        font-size: clamp(5rem, 28vw, 9rem);
+    }
+    
+    .timeline__bar {
+        display: none;
+    }
+}
+
+.timeline__card.on-scarlet,
+.timeline__card.on-ink {
+    --ghost-base: var(--color-bg);
 }

@@ -77,7 +77,7 @@
 
 @media (max-width: 900px) {
     .project-card {
-        position: static;
+        position: relative;
         transform: none !important;
         min-height: 0;
         padding: var(--space-5);
@@ -98,7 +98,8 @@
     overflow: hidden;
     padding-bottom: 0.16em;
     margin-bottom: -0.16em;
-    margin-right: 0.22em;
+    margin-right: 0.14em;
+    padding-right: 0.08em;
 }
 
 .project-card__word {

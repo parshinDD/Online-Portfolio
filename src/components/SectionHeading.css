@@ -30,7 +30,8 @@
     overflow: hidden;
     padding-bottom: 0.14em;
     margin-bottom: -0.14em;
-    margin-right: 0.24em;
+    margin-right: 0.14em;
+    padding-right: 0.1em;
 }
 
 .section-heading__word {

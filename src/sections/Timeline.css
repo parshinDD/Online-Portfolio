@@ -32,7 +32,8 @@
 .timeline__card {
     --ghost-base: var(--color-bg-card);
     position: relative;
-    flex: 0 0 min(80vw, 520px);
+    flex: 0 0 auto;
+    width: min(80vw, 520px);
     min-height: clamp(330px, 50vh, 440px);
     display: flex;
     flex-direction: column;
@@ -99,7 +100,7 @@
     transform-origin: left;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px), (max-height: 520px) {
     .timeline__pin {
         height: auto;
     }
@@ -120,7 +121,9 @@
     }
 
     .timeline__card {
+        overflow-wrap: anywhere;
         flex: none;
+        width: auto;
         min-height: 0;
         translate: none;
         transform: none !important;

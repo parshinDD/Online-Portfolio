@@ -1,11 +1,13 @@
-import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { Fragment, useRef } from "react";
+import { motion, useReducedMotion, useTransform } from "framer-motion";
+import { useScrollProgress } from "../hooks/useScrollProgress";
 import "./ScrollText.css";
 
 function Word({ children, progress, range }) {
     const opacity = useTransform(progress, range, [0.14, 1]);
+    
     return (
-        <motion.span style={{ opacity }}>
+        <motion.span className="scroll-text__word" style={{ opacity }}>
             {children}
         </motion.span>
     );
@@ -14,7 +16,7 @@ function Word({ children, progress, range }) {
 export function ScrollText({ text }) {
     const ref = useRef(null);
     const reduce = useReducedMotion();
-    const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.85", "end 0.5"] });
+    const progress = useScrollProgress(ref, 0.85, 0.5);
     const words = text.split(" ");
 
     if (reduce)
@@ -24,7 +26,13 @@ export function ScrollText({ text }) {
         <p className="scroll-text" ref={ref}>
             {words.map((w, i) => {
                 const start = (i / words.length) * 0.8;
-                return <Word key={i} progress={scrollYProgress} range={[start, start + 0.2]}>{w}</Word>;
+
+                return (
+                    <Fragment key={i}>
+                        <Word progress={progress} range={[start, start + 0.2]}>{w}</Word>
+                        {i < words.length - 1 ? " " : null}
+                    </Fragment>
+                );
             })}
         </p>
     );

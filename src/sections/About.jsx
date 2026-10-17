@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { AnimatePresence, motion, useMotionValueEvent } from "framer-motion";
+import { useScrollProgress } from "../hooks/useScrollProgress";
 import { SectionHeading } from "../components/SectionHeading";
 import { ScrollText } from "../components/ScrollText";
 import { sectionContent, skills } from "../data/Content";
@@ -44,7 +45,7 @@ export function About() {
 
     const [active, setActive] = useState(0);
 
-    const { scrollYProgress } = useScroll({ target: pinRef, offset: ["start start", "end end"] });
+    const scrollYProgress = useScrollProgress(pinRef, 0, 1);
 
     useMotionValueEvent(scrollYProgress, "change", (v) => {
         const next = Math.min(n - 1, Math.max(0, Math.floor(v * n)));
@@ -57,7 +58,7 @@ export function About() {
 
     const jump = (i) => {
         const el = pinRef.current;
-        if (!el || window.matchMedia("(max-width: 900px)").matches)
+        if (!el || window.matchMedia("(max-width: 900px), (max-height: 520px)").matches)
             return;
 
         const top = el.getBoundingClientRect().top + window.scrollY;

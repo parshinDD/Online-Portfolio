@@ -1,25 +1,24 @@
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useTransform } from "framer-motion";
 import { Button } from "../components/Button";
 import { useScramble } from "../hooks/useScramble";
+import { useScrollProgress } from "../hooks/useScrollProgress";
 import { profile } from "../data/Content";
 import "./Hero.css";
 
-function BgLayer({ progress, cls, a, b, scale: s, rise, first, last, reduce }) {
+function BgLayer({ progress, cls, a, b, first, last, reduce }) {
     const xa = useTransform(progress, [0, 1], a);
     const xb = useTransform(progress, [0, 1], b);
-    const scale = useTransform(progress, [0, 1], s);
-    const y = useTransform(progress, [0, 1], ["0%", rise]);
 
     return (
-        <motion.div className={`hero__bgl hero__bgl--${cls}`} style={reduce ? undefined : { scale, y }}>
+        <div className={`hero__bgl hero__bgl--${cls}`}>
             <motion.span className="hero__bgw hero__bgw--a" style={reduce ? undefined : { x: xa }}>
                 {first}
             </motion.span>
             <motion.span className="hero__bgw hero__bgw--b" style={reduce ? undefined : { x: xb }}>
                 {last}
             </motion.span>
-        </motion.div>
+        </div>
     );
 }
 
@@ -29,50 +28,41 @@ export function Hero() {
 
     const sectionRef = useRef(null);
     const roleRef = useRef(null);
-
     const reduce = useReducedMotion();
 
     useScramble(roleRef, profile.role, !reduce, 1200);
 
-    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
-
-    const x1 = useTransform(scrollYProgress, [0, 1], ["0%", "-18%"]);
-    const x2 = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
-    const photoY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
-    const photoScale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
+    const progress = useScrollProgress(sectionRef, 0, 0);
+    const x1 = useTransform(progress, [0, 1], ["0%", "-18%"]);
+    const x2 = useTransform(progress, [0, 1], ["0%", "-8%"]);
+    const photoY = useTransform(progress, [0, 1], ["0%", "-10%"]);
 
     return (
         <section id="hero" className="hero" ref={sectionRef}>
             <div className="hero__bg" aria-hidden="true">
                 <BgLayer
-                    progress={scrollYProgress}
+                    progress={progress}
                     cls="glow"
                     a={["0%", "-16%"]}
                     b={["0%", "12%"]}
-                    scale={[1, 1.12]}
-                    rise="-8%"
                     first={first}
                     last={last}
                     reduce={reduce}
                 />
                 <BgLayer
-                    progress={scrollYProgress}
+                    progress={progress}
                     cls="body"
                     a={["0%", "10%"]}
                     b={["0%", "-14%"]}
-                    scale={[1, 1.06]}
-                    rise="-4%"
                     first={first}
                     last={last}
                     reduce={reduce}
                 />
                 <BgLayer
-                    progress={scrollYProgress}
+                    progress={progress}
                     cls="trace"
                     a={["0%", "-6%"]}
                     b={["0%", "5%"]}
-                    scale={[1, 1.2]}
-                    rise="-12%"
                     first={first}
                     last={last}
                     reduce={reduce}
@@ -105,7 +95,7 @@ export function Hero() {
                         </h1>
                     </div>
 
-                    <motion.div className="hero__visual" style={reduce ? undefined : { y: photoY, scale: photoScale }}>
+                    <motion.div className="hero__visual" style={reduce ? undefined : { y: photoY }}>
                         <figure className="hero__photo">
                             <img
                                 src="/avatar.jpg"

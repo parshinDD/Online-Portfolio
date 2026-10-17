@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
-import { motion, useMotionValue, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useMotionValue, useReducedMotion, useTransform } from "framer-motion";
 import { SectionHeading } from "../components/SectionHeading";
+import { useScrollProgress } from "../hooks/useScrollProgress";
 import { timeline, sectionContent } from "../data/Content";
 import "./Timeline.css";
 
@@ -85,17 +86,22 @@ export function Timeline() {
     const pinRef = useRef(null);
     const trackRef = useRef(null);
     const distance = useRef(0);
-
     const version = useMotionValue(0);
 
-    const { scrollYProgress } = useScroll({ target: pinRef, offset: ["start start", "end end"] });
-    const x = useTransform([scrollYProgress, version], ([v]) => -v * distance.current);
+    const progress = useScrollProgress(pinRef, 0, 1);
+    const x = useTransform([progress, version], ([v]) => -v * distance.current);
 
     useEffect(() => {
         const measure = () => {
-            const track = trackRef.current;
-            if (track) {
-                distance.current = Math.max(track.scrollWidth - window.innerWidth, 0);
+            const cards = trackRef.current?.children;
+            if (cards && cards.length) {
+                const first = cards[0];
+                const last = cards[cards.length - 1];
+
+                const firstCenter = first.offsetLeft + first.offsetWidth / 2;
+                const lastCenter = last.offsetLeft + last.offsetWidth / 2;
+                
+                distance.current = Math.max(lastCenter - firstCenter, 0);
                 bump(version);
             }
         };
@@ -103,8 +109,15 @@ export function Timeline() {
         measure();
         window.addEventListener("resize", measure);
         document.fonts?.ready.then(measure);
-        
-        return () => window.removeEventListener("resize", measure);
+
+        const ro = new ResizeObserver(measure);
+        if (trackRef.current)
+            ro.observe(trackRef.current);
+
+        return () => {
+            window.removeEventListener("resize", measure);
+            ro.disconnect();
+        };
     }, [version]);
 
     return (
@@ -130,7 +143,7 @@ export function Timeline() {
                     </motion.ul>
 
                     <div className="timeline__bar" aria-hidden="true">
-                        <motion.span className="timeline__bar-fill" style={{ scaleX: scrollYProgress }} />
+                        <motion.span className="timeline__bar-fill" style={{ scaleX: progress }} />
                     </div>
                 </div>
             </div>

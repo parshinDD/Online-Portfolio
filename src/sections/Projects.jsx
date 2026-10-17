@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useScroll } from "framer-motion";
+import { useScrollProgress } from "../hooks/useScrollProgress";
 import { SectionHeading } from "../components/SectionHeading";
 import { ProjectCard } from "../components/ProjectCard";
 import { projects, sectionContent } from "../data/Content";
@@ -8,7 +8,7 @@ import "./Projects.css";
 export function Projects() {
     const { title, description } = sectionContent.projects;
     const stackRef = useRef(null);
-    const { scrollYProgress } = useScroll({ target: stackRef, offset: ["start start", "end end"] });
+    const scrollYProgress = useScrollProgress(stackRef, 0, 1);
     const n = projects.length;
 
     return (

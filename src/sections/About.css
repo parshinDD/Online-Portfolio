@@ -148,7 +148,7 @@
     color: var(--color-primary);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px), (max-height: 520px) {
     .skills__pin {
         height: auto;
     }
@@ -165,8 +165,9 @@
     }
 
     .skills__item {
-        font-size: clamp(2.4rem, 13vw, 4.5rem);
-        padding: var(--space-2) 0;
+        padding: var(--space-3) 0;
+        font-size: clamp(2rem, 10vw, 4rem);
+        overflow-wrap: anywhere;
     }
 
     .skills__name {
@@ -185,9 +186,10 @@
         font-size: var(--fs-base);
         letter-spacing: 0;
         line-height: 1.5;
+        text-wrap: pretty;
         color: var(--color-text-secondary);
     }
-    
+
     .skills__item::before {
         display: none;
     }
